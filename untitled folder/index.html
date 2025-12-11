@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Inspo Reel – Mockup Website</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro", sans-serif;
+    }
+
+    body {
+      background: #050509;
+      color: #f5f5f5;
+      line-height: 1.6;
+    }
+
+    .page {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 40px 20px 80px;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 40px;
+    }
+
+    .logo {
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-size: 14px;
+    }
+
+    .tagline {
+      font-size: 13px;
+      opacity: 0.7;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
+      gap: 32px;
+      align-items: center;
+      margin-bottom: 60px;
+    }
+
+    @media (max-width: 800px) {
+      .hero {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .browser-frame {
+      background: #0f0f15;
+      border-radius: 18px;
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.7);
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .browser-topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 14px;
+      background: linear-gradient(90deg, #14141f, #11111a);
+    }
+
+    .dots {
+      display: flex;
+      gap: 6px;
+    }
+
+    .dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #ff5f57; /* red */
+    }
+
+    .dot:nth-child(2) {
+      background: #febc2e; /* yellow */
+    }
+
+    .dot:nth-child(3) {
+      background: #28c840; /* green */
+    }
+
+    .url-bar {
+      flex: 1;
+      margin: 0 16px;
+      padding: 6px 10px;
+      border-radius: 10px;
+      background: rgba(255, 255, 255, 0.04);
+      font-size: 11px;
+      color: rgba(255, 255, 255, 0.5);
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
+
+    .browser-body video,
+    .browser-body iframe {
+      width: 100%;
+      display: block;
+      max-height: 520px;
+      background: black;
+    }
+
+    .hero-text h1 {
+      font-size: 32px;
+      margin-bottom: 12px;
+    }
+
+    .hero-text p {
+      font-size: 14px;
+      opacity: 0.8;
+      margin-bottom: 18px;
+    }
+
+    .pill {
+      display: inline-flex;
+      gap: 8px;
+      align-items: center;
+      padding: 6px 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      opacity: 0.8;
+    }
+
+    .pill span:last-child {
+      opacity: 0.7;
+    }
+
+    section {
+      margin-bottom: 60px;
+    }
+
+    h2.section-title {
+      font-size: 18px;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      margin-bottom: 18px;
+      opacity: 0.8;
+    }
+
+    .stills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 16px;
+    }
+
+    .still {
+      position: relative;
+      border-radius: 16px;
+      overflow: hidden;
+      background: #111;
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      cursor: pointer;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+    }
+
+    .still img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      filter: saturate(1.1);
+    }
+
+    .still:hover {
+      transform: translateY(-4px) scale(1.01);
+      box-shadow: 0 16px 30px rgba(0, 0, 0, 0.6);
+      border-color: rgba(255, 255, 255, 0.3);
+    }
+
+    .still-caption {
+      position: absolute;
+      left: 10px;
+      bottom: 10px;
+      padding: 4px 8px;
+      border-radius: 999px;
+      background: rgba(0, 0, 0, 0.55);
+      font-size: 11px;
+      backdrop-filter: blur(10px);
+    }
+
+    .concept {
+      display: grid;
+      grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
+      gap: 24px;
+      align-items: start;
+    }
+
+    @media (max-width: 800px) {
+      .concept {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .concept p {
+      font-size: 14px;
+      opacity: 0.85;
+      margin-bottom: 10px;
+    }
+
+    .concept-image {
+      border-radius: 18px;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      background: radial-gradient(circle at top, #32324b, #050509);
+      min-height: 220px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      opacity: 0.8;
+    }
+
+    .process-strip {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .step {
+      flex: 1 1 160px;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      padding: 10px 14px;
+      font-size: 12px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    footer {
+      font-size: 12px;
+      opacity: 0.7;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      padding-top: 18px;
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header>
+      <div class="logo"> Reel Mockup</div>
+      <div class="tagline">Motion · Visual Exploration</div>
+    </header>
+
+    <!-- HERO -->
+    <div class="hero">
+      <div class="browser-frame">
+        <div class="browser-topbar">
+          <div class="dots">
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+          </div>
+          <div class="url-bar">https://yuyao-reel.com/abandoned-chairs</div>
+        </div>
+        <div class="browser-body">
+         <video id="reelVideo" controls>
+  <source src="YuyaoWang_Core3_Final_Project_Motion.mp4" type="video/mp4" />
+  Your browser does not support the video tag.
+</video>
+
+         
+        </div>
+      </div>
+
+      <div class="hero-text">
+        <div class="pill">
+          <span>Abandoned Chairs</span>
+          <span>Inspo Reel</span>
+        </div>
+        <h1>Forgotten Objects, Glass Memories.</h1>
+        <p>
+          A short motion reel exploring street chairs as fragile artifacts of over-consumption,
+          memory, and urban infrastructure. Glass, bubble textures, and subtle wobble echo the
+          instability of these everyday monuments.
+        </p>
+        <p style="font-size:12px; opacity:0.7;">
+          Role · Direction, Design, 3D<br />
+          Tools · C4D, After Effects, Octane, Adobe CC
+        </p>
+      </div>
+    </div>
+
+    <!-- STILLS -->
+    <section>
+      <h2 class="section-title">SELECT FRAMES</h2>
+      <div class="stills-grid">
+        <!-- Replace the placeholder images with your own frame exports -->
+        <div class="still">
+          <img src="frame-01.jpg" alt="Glass chair close up" />
+          <div class="still-caption">Glass chair close-up</div>
+        </div>
+        <div class="still">
+          <img src="frame-02.jpg" alt="Bubble texture overlay" />
+          <div class="still-caption">Bubble texture overlay</div>
+        </div>
+        <div class="still">
+          <img src="frame-03.jpg" alt="Street at night" />
+          <div class="still-caption">Night street ambience</div>
+        </div>
+        <div class="still">
+          <img src="frame-04.jpg" alt="Chair silhouette" />
+          <div class="still-caption">Chair as silhouette</div>
+        </div>
+        <div class="still">
+          <img src="frame-05.jpg" alt="Floating cubes" />
+          <div class="still-caption">Floating cubes</div>
+        </div>
+        <div class="still">
+          <img src="frame-06.jpg" alt="Glass shards motion" />
+          <div class="still-caption">Shattered motion</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONCEPT -->
+    <section class="concept">
+      <div>
+        <h2 class="section-title">CONCEPT</h2>
+        <p>
+          The reel collects visual “echoes” of abandoned chairs on New York streets,
+          translating them into a glass-like digital form. Their transparency suggests both
+          presence and absence, like NPCs in an open-world game.
+        </p>
+        <p>
+          The motion language is minimal and slightly unstable: a slow wobble, floating
+          cubes, soft refractions. Nothing fully settles, mirroring how these objects hover
+          between trash and treasure, function and memory.
+        </p>
+        <p>
+          Color stays restrained (deep navy, muted neons, subtle reflections) to highlight
+          materiality and light. The sound design can be imagined as low, distant city hum
+          with small percussive glitches.
+        </p>
+      </div>
+      <div class="concept-image">
+        Drop a key still here<br /> (e.g., chair + bubble texture)
+      </div>
+    </section>
+
+    <!-- PROCESS -->
+    <section>
+      <h2 class="section-title">PROCESS</h2>
+      <div class="process-strip">
+        <div class="step">
+          <span>01 · Street photo archive</span>
+          <span>NYC walks</span>
+        </div>
+        <div class="step">
+          <span>02 · 3D glass chair</span>
+          <span>C4D + Octane</span>
+        </div>
+        <div class="step">
+          <span>03 · Motion & comp</span>
+          <span>AE</span>
+        </div>
+        <div class="step">
+          <span>04 · Final reel edit</span>
+          <span>Premiere / AE</span>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      © 2025 Yuyao Wang · Reel exploration.  
+      Available for collabs & motion design projects.
+    </footer>
+  </div>
+</body>
+</html>
+
